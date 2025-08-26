@@ -32,7 +32,7 @@ namespace Network
             pingOptions.DontFragment = true;
         }
 
-        public void Reply()
+        public void SendPing()
         {
             pingReply=pingSender.Send(Address, TimeOut,Buffer,pingOptions);
         }
@@ -45,6 +45,10 @@ namespace Network
                 Console.WriteLine($"RounfTrip: {pingReply.RoundtripTime}");
                 Console.WriteLine($"Time To Live: {pingReply.Options.Ttl}");
                 Console.WriteLine($"Buffer size: {Buffer.Length}");
+            }
+            else
+            {
+                Console.WriteLine($"Response: {pingReply.Status}");
             }
         }
     }
